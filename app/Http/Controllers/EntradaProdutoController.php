@@ -39,7 +39,10 @@ class EntradaProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+
+        $entradaproduto = EntradaProduto::create($request->all());
+        return redirect()->route('entradaproduto.edit',$entradaproduto)->with('mensagem','Entrada cadastrada com sucesso!!');
     }
 
     /**

@@ -23,7 +23,7 @@
             <thead class="bg-secondary text-white">
                 <tr>
                     <th>ID</th>
-                    <th></th>
+                    <th>Filial</th>
                     <th>Regional</th>
                     <th>IE</th>
                     <th>Cidade</th>
