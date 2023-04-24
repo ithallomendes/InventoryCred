@@ -15,10 +15,11 @@
                 <div class="col-sm-4">
                     {!! Form::label('id_fornecedor', 'Fornecedor') !!}
                     <select class="form-control" name="id_fornecedor" id="id_fornecedor">
-                        <option value="">SELECIONE</option>
-                        <option value="0">EC500</option>
-                        <option value="1">EC900</option>
-                        <option value="2">Coordenador</option>
+                    <option value="">SELECIONE</option>
+                    @foreach ($fornecedores as $fornecedor)
+                    <option value="{{$fornecedor->id}}">{{$fornecedor->fornecedor}}</option>
+                    @endforeach 
+                    </select>
                     </select>
                 </div>
                 <div class="col-sm-2">
@@ -30,7 +31,7 @@
                 </div>
                 <div class="col-sm-2">
                     {!! Form::label('data_emissao', 'Data Emissao') !!}
-                    {!! Form::text('data_emissao',null, ['class'=>'form-control', 'placeholder'=>'Data Emissao...']) !!}
+                    {!! Form::date('data_emissao',null, ['class'=>'form-control', 'placeholder'=>'Data Emissao...']) !!}
                     @error('marca')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -44,7 +45,7 @@
                 </div>
                 <div class="col-sm-2">
                     {!! Form::label('xml', 'XML NOTA') !!}
-                    {!! Form::button('Anexar', ['class'=>'form-control btn btn-danger']) !!}
+                    {!! Form::file('xml', ['class' => 'form-control-file']) !!}
                 </div>
             </div>
         </div>

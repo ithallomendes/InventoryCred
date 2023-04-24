@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EntradaProduto;
 use Illuminate\Http\Request;
+use App\Models\Fornecedor;
 
 class EntradaProdutoController extends Controller
 {
@@ -12,6 +13,10 @@ class EntradaProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(Fornecedor $fornecedor)
+    {
+     $this->fornecedor = $fornecedor;
+    }
     public function index()
     {
         //
@@ -27,8 +32,10 @@ class EntradaProdutoController extends Controller
      */
     public function create()
     {
+        $fornecedores = $this->fornecedor
+        ->orderBy('fornecedor', 'ASC')->get();
         //
-        return view('entradaproduto.create');
+        return view('entradaproduto.create', ['fornecedores' => $fornecedores]);
     }
 
     /**
@@ -39,7 +46,7 @@ class EntradaProdutoController extends Controller
      */
     public function store(Request $request)
     {
-    
+        
 
         $entradaproduto = EntradaProduto::create($request->all());
         return redirect()->route('entradaproduto.edit',$entradaproduto)->with('mensagem','Entrada cadastrada com sucesso!!');
@@ -54,6 +61,8 @@ class EntradaProdutoController extends Controller
     public function show(EntradaProduto $entradaproduto)
     {
         //
+        return view('entradaproduto.show');
+
     }
 
     /**
@@ -65,6 +74,9 @@ class EntradaProdutoController extends Controller
     public function edit(EntradaProduto $entradaproduto)
     {
         //
+        $fornecedores = $this->fornecedor->orderBy('fornecedor', 'ASC')->get();
+
+        return view('equipamento.edit',compact('equipamento'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
+use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
@@ -12,6 +13,9 @@ class FornecedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    
+
     public function index()
     {
         $fornecedores=fornecedor::all();
@@ -27,6 +31,8 @@ class FornecedorController extends Controller
     public function create()
     {
         //
+       
+
         return view('fornecedor.create');
     }
 
@@ -62,6 +68,8 @@ class FornecedorController extends Controller
     public function show(Fornecedor $fornecedor)
     {
         //
+        return view('fornecedor.show');
+
     }
 
     /**
